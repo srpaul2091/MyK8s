@@ -131,6 +131,12 @@ jobs:
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-region: ap-southeast-2 
 
+      - name: Create PEM file
+        run: |
+            mkdir -p keys
+            echo "${{ secrets.EC2_PRIVATE_KEY }}" > keys/srp.pem
+            chmod 600 keys/srp.pem
+
       - name: 🚀 Terraform Init
         run: terraform init
 
@@ -144,6 +150,6 @@ jobs:
         run: |
             pwd
             ls -R 
-            
+
       - name: ✅ Terraform Apply
         run: terraform apply -input=false tfplan
