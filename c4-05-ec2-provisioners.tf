@@ -3,10 +3,10 @@ resource "null_resource" "copy_ec2_keys" {
   depends_on = [aws_instance.kubenode]
   # Connection Block for Provisioners to connect to EC2 Instance
   connection {
-    type     = "ssh"
-    host     = aws_instance.kubenode["controlplane"].public_ip
-    user     = "ubuntu"
-    password = ""
+    type        = "ssh"
+    host        = aws_instance.kubenode["controlplane"].public_ip
+    user        = "ubuntu"
+    password    = ""
     private_key = file("/d01/MyWork/AWS/SRP/TERRAFORM/EC2/V1/KeyPair/SRP/srp.pem")
     #private_key = file("/d01/MyWork/AWS/SRP/TERRAFORM/EC2/V1/KeyPair/KKP/myTerraformKey.pem")
 
@@ -65,7 +65,7 @@ resource "null_resource" "copy_ec2_keys" {
     #on_failure = continue
   }
 
-  
- 
+
+
 
 }

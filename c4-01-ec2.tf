@@ -52,7 +52,7 @@ resource "aws_network_interface" "kubenode" {
 resource "aws_instance" "kubenode" {
   for_each      = toset(local.instances)
   ami           = "ami-010876b9ddd38475e" # 24.4 "ami-0eeab253db7e765a9" # 22.4
-  key_name      = "srp" #"myTerraformKey"
+  key_name      = "srp"                   #"myTerraformKey"
   instance_type = "t3.medium"
 
   root_block_device {
@@ -61,7 +61,7 @@ resource "aws_instance" "kubenode" {
     # encrypted   = true
     # kms_key_id  = data.aws_kms_key.customer_master_key.arn
   }
-/*
+  /*
   network_interface {
     device_index         = 0
     network_interface_id = aws_network_interface.kubenode[each.value].id

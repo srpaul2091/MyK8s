@@ -25,7 +25,7 @@ terraform {
     use_lockfile = true #S3 native locking    
     #dynamodb_table = "dev-ekscluster" # For DynamoDB State Locking
 
-  }/*
+  } /*
   #Adding Backend as S3 for Remote State Storage
   backend "s3" {
     bucket       = "kkp-test-bkt-v0" #"tf-state-srp-apr02"
