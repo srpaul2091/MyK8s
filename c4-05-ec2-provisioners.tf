@@ -13,16 +13,15 @@ resource "null_resource" "copy_ec2_keys" {
 
   }
 
-  ## File Provisioner: Copies the terraform-key.pem file to /tmp/terraform-key.pem
+  ## File Provisioner: Copies the terraform-key.pem file to /tmp/.pem
   provisioner "file" {
-    #source      = "/d01/MyWork/AWS/SRP/TERRAFORM/EC2/V1/KeyPair/KKP/myTerraformKey.pem" 
-    source      = file("${path.root}/keys/srp.pem") #"/d01/MyWork/AWS/SRP/TERRAFORM/EC2/V1/KeyPair/SRP/srp.pem"
-    destination = "/tmp/eks-terraform-key.pem"
+    source      = file("${path.root}/keys/srp.pem") 
+    destination = "/tmp/srp.pem"
   }
   ## Remote Exec Provisioner: Using remote-exec provisioner fix the private key permissions on Bastion Host
   provisioner "remote-exec" {
     inline = [
-      "sudo chmod 400 /tmp/eks-terraform-key.pem",
+      "sudo chmod 400 /tmp/srp.pem",
       "sudo mkdir -p /d01/MyWork/AWS/SRP/MySchool/APP",
       "sudo mkdir -p /d01/MyWork/AWS/SRP/MySchool/GATE",
       "sudo mkdir -p /d01/MyWork/AWS/SRP/MySchool/INGR",
