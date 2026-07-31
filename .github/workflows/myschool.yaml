@@ -30,8 +30,8 @@ jobs:
       - name: ⚙️ Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.7.0
-          
+          terraform_version: 1.15.0  # This version is compatible with the Terraform code in this repository required_version = "~> 1.15.0"
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
