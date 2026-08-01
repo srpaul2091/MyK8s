@@ -154,4 +154,20 @@ jobs:
       - name: ✅ Terraform Apply
         run: terraform apply -input=false tfplan
 
-    
+      - name: 📢 Send SNS Notification
+        if: success()
+        run: |
+          aws sns publish \
+            --topic-arn arn:aws:sns:ap-southeast-2:022499019288:MyEKStopic \
+            --subject "Terraform Apply Successful" \
+            --message "
+            Workflow: ${{ github.workflow }}
+            Repository: ${{ github.repository }}
+            Branch: ${{ github.ref_name }}
+            Run ID: ${{ github.run_id }}
+
+            Terraform apply completed successfully.
+
+            URL:
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            "
