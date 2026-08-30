@@ -18,7 +18,7 @@ resource "null_resource" "copy_ec2_keys" {
     #source      = file("${path.root}/keys/srp.pem") 
     source      = "${path.root}/keys/srp.pem"
     destination = "/tmp/srp.pem"
-  }
+  } 
   ## Remote Exec Provisioner: Using remote-exec provisioner fix the private key permissions on Bastion Host
   provisioner "remote-exec" {
     inline = [
