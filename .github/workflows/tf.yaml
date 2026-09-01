@@ -1,4 +1,4 @@
-ame: Terraform Infrastructure
+name: Terraform Infrastructure
 
 # PR to main        → plan only
 # Push/merge to main → plan (auto) → approval gate → apply
