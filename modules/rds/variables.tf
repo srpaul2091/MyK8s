@@ -38,6 +38,7 @@ variable "password" {
   description = "Master password for the database"
   type        = string
   sensitive   = true
+  default     = "kkp12345678"
 }
 
 variable "password_version" {
