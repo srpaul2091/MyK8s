@@ -18,8 +18,6 @@ module "vpc" {
   private_subnet_cidrs  = ["10.0.3.0/24", "10.0.4.0/24"]
   database_subnet_cidrs = ["10.0.5.0/24", "10.0.6.0/24"]
 }
-
-
 module "eks" {
   source = "../../modules/eks"
 
@@ -30,7 +28,7 @@ module "eks" {
   kubernetes_version = "1.35"
   instance_types     = ["t3.small"]
   min_size           = 1
-  max_size           = 2
+  max_size           = 3
   desired_size       = 1
 }
 
