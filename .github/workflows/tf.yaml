@@ -153,3 +153,46 @@ jobs:
         if: failure() || cancelled()
         run: |
           aws s3 rm s3://${{ env.TF_STATE_BUCKET }}/envs/dev/terraform.tfstate.tflock || true
+# ── Destroy ───────────────────────────────────────────────────────────────
+  destroy:
+    name: Terraform Destroy
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' &&
+      github.event.inputs.action == 'destroy' &&
+      github.event.inputs.confirm_destroy == 'destroy'
+    #environment: dev   # ← approval gate for destroy too
+    defaults:
+      run:
+        working-directory: envs/dev
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup Terraform ${{ env.TF_VERSION }}
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Destroy
+        run: |
+          terraform destroy \
+            -var="db_password=${{ secrets.DEV_DB_PASSWORD }}" \
+            -var="jwt_secret=${{ secrets.DEV_JWT_SECRET }}" \         
+            -auto-approve \
+            -no-color
+
+      - name: Release state lock on failure
+        if: failure() || cancelled()
+        run: |
+          aws s3 rm s3://${{ vars.TF_STATE_BUCKET }}/envs/dev/terraform.tfstate.tflock || true
