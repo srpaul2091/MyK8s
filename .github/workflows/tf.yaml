@@ -3,7 +3,6 @@ name: Terraform Infrastructure
 # PR to main        → plan only
 # Push/merge to main → plan (auto) → approval gate → apply
 # Manual dispatch    → plan, apply, or destroy dev environment
-
 on:
   push:
     branches: [main]
@@ -188,7 +187,7 @@ jobs:
         run: |
           terraform destroy \
             -var="db_password=${{ secrets.DEV_DB_PASSWORD }}" \
-            -var="jwt_secret=${{ secrets.DEV_JWT_SECRET }}" \      
+            -var="jwt_secret=${{ secrets.DEV_JWT_SECRET }}" \
             -auto-approve \
             -no-color
 
