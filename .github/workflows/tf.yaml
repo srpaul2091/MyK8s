@@ -1,5 +1,4 @@
 name: Terraform Infrastructure
-
 # PR to main        → plan only
 # Push/merge to main → plan (auto) → approval gate → apply
 # Manual dispatch    → plan, apply, or destroy dev environment
@@ -48,7 +47,6 @@ jobs:
     defaults:
       run:
         working-directory: envs/dev
-
     steps:
       - uses: actions/checkout@v5
 
