@@ -37,7 +37,7 @@ terraform apply
 ```
 
 Type `yes` when prompted. This takes 10–15 minutes.
-
+ss
 ### Step 2: Configure kubectl
 
 Once infrastructure is up, point your local `kubectl` at the new cluster:
