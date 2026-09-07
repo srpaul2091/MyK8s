@@ -43,7 +43,7 @@ Type `yes` when prompted. This takes 10–15 minutes.
 Once infrastructure is up, point your local `kubectl` at the new cluster:
 
 ```bash
-aws eks update-kubeconfig --name pharma-dev-cluster --region us-east-1
+aws eks update-kubeconfig --name pharma-dev-cluster --region ap-southeast-2
 ```
 
 > **What does this command do?**
