@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # =============================================================================
 # Stage 2 - Install Kubernetes Pre-requisites
-#
+##
 # Installs on the EKS cluster (must already exist from Stage 1 Terraform):
 #   1. AWS Load Balancer Controller - exposes services via AWS ALB
 #   2. ArgoCD                       - GitOps CD controller
