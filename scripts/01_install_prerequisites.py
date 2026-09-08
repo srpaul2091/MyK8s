@@ -108,7 +108,7 @@ print()
 CLUSTER_NAME        = prompt("CLUSTER_NAME",        "EKS cluster name",
                              "pharma-dev-cluster", "pharma-dev-cluster")
 AWS_REGION          = prompt("AWS_REGION",          "AWS region where the cluster is deployed",
-                             "us-east-1", "us-east-1")
+                             "ap-southeast-2", "ap-southeast-2")
 ALB_CONTROLLER_ROLE = prompt("ALB_CONTROLLER_ROLE", "IAM role ARN for the AWS Load Balancer Controller",
                              "arn:aws:iam::<aws-account-id>:role/pharma-dev-alb-controller-role",
                              "arn:aws:iam::873135413040:role/pharma-dev-alb-controller-role")

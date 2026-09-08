@@ -1,4 +1,4 @@
-# ZenPharma Dev Environment — managed via GitHub Actions CI/CD # By KKP 006 007
+# ZenPharma Dev Environment — managed via GitHub Actions CI/CD # By KKP 006 007 008
 locals {
   project = "pharma"
   env     = "dev"
@@ -26,8 +26,8 @@ module "eks" {
   vpc_id             = module.vpc.vpc_id
   subnet_ids         = module.vpc.private_subnets
   kubernetes_version = "1.35"
-  instance_types     = ["t3.small"]
-  min_size           = 1
+  instance_types     = ["t3.medium"]
+  min_size           = 2
   max_size           = 3
   desired_size       = 2
 }
