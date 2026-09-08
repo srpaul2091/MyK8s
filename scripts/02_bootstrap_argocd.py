@@ -153,7 +153,7 @@ GITHUB_USERNAME = prompt("GITHUB_USERNAME", "Your personal GitHub username",
                           "srpaul2091", "ravdsun")
 GITOPS_TOKEN    = prompt_secret("GITOPS_TOKEN",
                                 "GitHub Personal Access Token with read access to gitops",
-                                "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")
+                                "github_pat_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 default_gitops = os.path.join(DEFAULT_PROJECT_ROOT, "gitops")
 GITOPS_PATH     = prompt("GITOPS_PATH", "Local path to your gitops repo",
