@@ -8,6 +8,8 @@ git remote add origin https://srpaul2091@github.com/srpaul2091/MyK8s.git
 git push -u origin main
 ```
 -----------------------------------------------------------------------------------------------------------------------
+# More Argo
+https://medium.com/curious-devs-corner/argo-rollouts-progressive-delivery-for-gitops-kubernetes-ce74db7ce535
 # zen-infra — Implementation Guide
 
 ![Infra Setup](docs/architecture.jpg)
